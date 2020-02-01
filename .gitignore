@@ -1,7 +1,6 @@
 *.log
 *.aux
 *.bbl
-*.bib
 *.synctex.gz
 *.toc
 *.blg

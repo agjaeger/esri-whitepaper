@@ -1,0 +1,264 @@
+% $Id: template.tex 11 2007-04-03 22:25:53Z jpeltier $
+
+\documentclass{vgtc}                          % final (conference style)
+%\documentclass[review]{vgtc}                 % review
+%\documentclass[widereview]{vgtc}             % wide-spaced review
+%\documentclass[preprint]{vgtc}               % preprint
+%\documentclass[electronic]{vgtc}             % electronic version
+
+\usepackage{mathptmx}
+\usepackage{graphicx}
+\usepackage{times}
+\usepackage[inline]{enumitem}
+
+\vgtccategory{Research}
+\vgtcinsertpkg
+
+\def\contentsname{\empty}
+\title{Features of ESRI Online}
+
+\author{
+	Alex Jaeger \\ %
+    \scriptsize UA Little Rock
+}
+
+
+\begin{document}
+
+
+\maketitle
+
+\tableofcontents
+
+\section{ArcGIS REST API}
+
+\subsection{Location-based Services}
+
+\subsubsection{Geocoding}
+
+The Geocoding API provides endpoints for converting an address to a lat/long, a lat/long to an address, and suggestions. The United States has complete coverage with English and Spanish as supported languages.
+
+\paragraph{findAddressCandidates}
+Converts a single human-readable address into lat/long pair. The query supports the following types of data:
+
+\begin{enumerate*}
+	\item Street Addresses
+	\item Street Intersections
+	\item Points of Interest
+	\item Administrative Place Names
+	\item Postal Codes
+\end{enumerate*}	
+	
+	
+\paragraph{geocodeAddresses}
+Similar to findAddressCandidates however instead of a single query, this endpoint allows a batch of addresses to be parsed in one request.
+
+\paragraph{reverseGeocode}
+Converts a lat/long pair to an address at a particular x/y location.
+
+\paragraph{suggest}
+Character by Character autocomplete suggestions. The following types of searches are supported:
+
+\begin{enumerate*}
+	\item Street Addresses
+	\item Street Intersections
+	\item Points of Interest
+	\item Points of Interest By Type
+	\item Administrative Place Names
+	\item Postal Codes
+\end{enumerate*}
+
+\subsubsection{Routing and Directions}
+
+\paragraph{Route Service}
+Gets the best way from one location to another or visit several locations. The "best" route can either be the quickest (depending on time of day and traffic conditions) or the shortest. This service can also determine the best sequence to visit all the locations (ala traveling salesman). 
+
+You can modify the travel mode. Available in Synchronous and Asynchronous execution mode. 
+
+\paragraph{Closest Facilty}
+Finds the closest points of interest given an address. In this case, the definition of points of interest is quite flexible. You can filter out the maximum impedance to prevent results above a certain threshold (e.g. only hospitals in a 15minute radius). 
+
+You can modify the travel mode. Available in Synchronous and Asynchronous execution mode.
+
+\paragraph{Service Area} aka Isochrones.
+Get the area that can be reached from an address within a given travel time or distance. The tool can make use of traffic data to influence the results. 
+
+You can modify the travel mode. Available in Synchronous and Asynchronous execution mode.
+
+\paragraph{Location-Allocation}
+Answers questions such as "Given a set of existing fire stations, which site for a new fire station would provide the best response times for the community"
+
+Only available in Asynchronous execution mode.
+
+\paragraph{Vehicle Routing Problem}
+Helps determine which orders for an organization should be delivered on a route from a set of routes. For example, a furniture store using several trucks to deliver furniture to homes.
+
+\paragraph{Origin Distance Cost Matrix}
+Creates a nxm matrix from n origin locations to m destinations. Determines distance by taking the best route and considering travel mode and traffic. 
+
+Only available in Asynchronous execution mode.
+
+\paragraph{Traffic}
+Gets real-time information on traffic speed and incidents. The speed data is presented as colored road segments, updated every five minutes and contain predictions for the next 12 hours. The incident data is are single points and refresh at every update. 
+
+
+\subsubsection{Demographics and GeoEnrichment}
+
+Provides methods to generate reports given geographic queries.
+
+
+\subsubsection{Elevation Analysis}
+
+\paragraph{Elevation Profile}
+Returns the cross-section profile across a given line.
+
+\paragraph{Summarize Elevation}
+Given a geographic query, get elevation statistics. 
+
+\paragraph{Viewshed}
+Identify visible areas based on observer locations.
+
+
+\subsubsection{Hydrology Analysis}
+
+\paragraph{Trace Downstream}
+Determines the flow path in a downstream direction from a given location.
+
+\paragraph{Watershed}
+Determines where liquid would "catch" or settle based on a particular location.
+
+
+
+
+
+\subsubsection{Tasks that summarize Data}
+
+\paragraph{Aggregate Points}
+Given a set of polygons and points, determine the points that lie in each polygon.
+
+
+\paragraph{Join Features}
+Joins features from two layers based on spatial and attribute relationships.
+
+\paragraph{Summarize Nearby}
+Finds features that are withing a specified distance.
+
+\paragraph{Summarize Center and Dispersion}
+Finds the center and directionality of a set of features. 
+
+\paragraph{Summarize Within}
+Finds features that are bounded by given polygons. 
+
+
+
+
+\subsubsection{Tasks that find locations}
+
+\paragraph{Find Existing Locations}
+Selects features in an input layer that meet a query.
+
+\paragraph{Derive New Locations}
+Creates new features from an input later that meet a query.
+
+\paragraph{Find Centroids}
+Find and generate points from the centroid of a given polygon.
+
+\paragraph{Find Similar Locations}
+Measures the similarity of candidate locations to one or more reference locations.
+
+\paragraph{Choose Best Facilities}
+Finds the set of facilities that will best serve demand from surrounding areas
+
+\paragraph{Create Viewshed}
+Identifies visible areas based on the input location
+
+\paragraph{Trace Downstream}
+Determines the flow path in a downstream direction from given points.
+
+
+
+
+\subsubsection{Tasks that enrich data}
+
+\paragraph{Enrich Layer}
+Returns facts about the people, places, and businesses that surround your data locations.
+
+
+
+
+
+\subsubsection{Tasks that analyze patterns}
+
+\paragraph{Calculate Density}
+Creates a density map from features.
+
+\paragraph{Find Hot Spots}
+Analyzes point data (such as crime incidents, traffic accidents, etc) or area features (such as number of people in region) to find statistically significant regions.
+ 
+\paragraph{Find Outliers}
+Similar to Find Hot Spots but searches for outliers.
+
+\paragraph{Find Point Clusters}
+Finds clusters from a given set of points.
+
+\paragraph{Interpolate Points}
+Allows you to predict values at new locations based off a given set of points
+
+
+
+
+
+\subsubsection{Tasks that use proximity}
+
+
+\paragraph{Create Drive-Time Areas}
+Creates areas that can be reached within a given drive time or drive distance
+ 
+\paragraph{Find Nearest}
+Measures the straight-line distance, driving distance, or driving time from features in the analysis layer to features in the near layer, and copies the nearest features in the near layer to a new layer.
+
+\paragraph{Plan Routes}
+Determines how to efficiently divide tasks among a mobile workforce
+
+\paragraph{Connect Origins To Destinations}
+Measures the travel time or distance between pairs of points.
+
+
+\subsubsection{Tasks that manage data}
+
+\paragraph{Extract Data}
+Allows you to export data
+
+\paragraph{Dissolve Boundaries}
+Finds polygons that overlap or share a common boundary and merges them together to form a single polygon. 
+
+\paragraph{Merge Layers}
+Copies features from two layers into a new layer.
+ 
+\paragraph{Overlay Layers}
+Combines two or more layers into one single layer. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%\bibliographystyle{abbrv}
+%\bibliography{whitepaper}
+
+\end{document}
